@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paul Simulator</title>
+    <link rel="icon" href="./1.png">
+</head>
+
+<script>
+    let strumSound = new Audio("./uke.mp3")
+
+    let messages = [
+        "Ouais !",
+        "Vas-y !",
+        "Ca ~groove~",
+        "Quel artiste !",
+        "Le Uke, c'est tellement mieux que la guitare",
+        ":D",
+        "*clap clap clap*"
+    ]
+
+    let strumCount = 0
+
+    function strum() {
+        strumSound.cloneNode().play()
+        document.getElementById("2").classList.remove("hidden")
+        document.getElementById("message").innerText = messages[Math.floor(Math.random() * messages.length)]
+        strumCount ++
+        document.getElementById("strum-count").innerText = "Nombre de strum : " + strumCount
+        setTimeout(() => { document.getElementById("2").classList.add("hidden") }, 100)
+    }
+</script>
+
+<body>
+    <h1>Paul Simulator</h1>
+    <h2>Clique pour jouer ! (et monte le son)</h2>
+
+    <div class="image-container" onclick="strum()">
+        <img id="1" src="./1.png" alt="Paul">
+        <img id="2" src="./2.png" alt="Paul" class="hidden">
+    </div>
+
+    <p id="message"></p>
+    <p id="strum-count">Nombre de strum : 0</p>
+
+</body>
+
+<style>
+    body {
+        background-color: bisque;
+        height: 100vh;
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    h1,
+    h2,
+    p {
+        margin: 0;
+    }
+
+    .image-container {
+        position: relative;
+        width: 536px;
+        height: 690px;
+        border-radius: 24px;
+    }
+
+    .image-container>img {
+        border-radius: 24px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+
+</html>
