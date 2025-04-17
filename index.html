@@ -21,24 +21,52 @@
         "*clap clap clap*"
     ]
 
-    let strumCount = 0
+    let strumCount = localStorage.getItem("strumCount")
+    if (strumCount == null) {
+        strumCount = 0
+    }
+
+    function init() {
+        document.getElementById("strum-count").innerText = "Nombre de strum : " + strumCount
+    }
+
+    function animatePoint() {
+        let pointText = document.createElement("h1")
+        pointText.innerText = "+1"
+        pointText.classList.add("point")
+        document.getElementById("image-container").appendChild(pointText)
+        setTimeout(()=>{pointText.remove()}, 750)
+    }
 
     function strum() {
+        // Play sound
         strumSound.cloneNode().play()
+
+        // Play animation
+        animatePoint()
+
+        // Toggle picture
         document.getElementById("img").classList.remove("hidden")
+        setTimeout(() => { document.getElementById("img").classList.add("hidden") }, 100)
+
+        // Set message
         document.getElementById("message").innerText = messages[Math.floor(Math.random() * messages.length)]
+
+        // Update score
         strumCount++
         document.getElementById("strum-count").innerText = "Nombre de strum : " + strumCount
-        setTimeout(() => { document.getElementById("img").classList.add("hidden") }, 100)
+        localStorage.setItem("strumCount", strumCount)
     }
+
+
 </script>
 
-<body>
+<body onload="init()">
     <h1>Paul Simulator</h1>
     <h2>Clique pour jouer !</h2>
     <h3>(et monte le son)</h3>
 
-    <div class="image-container" onclick="strum()">
+    <div id="image-container" class="image-container" onclick="strum()">
         <img src="./1.png" alt="Paul">
         <img id="img" src="./2.png" alt="Paul" class="hidden">
     </div>
@@ -50,6 +78,19 @@
 </body>
 
 <style>
+    @keyframes add-point {
+        0% {
+            opacity: 100%;
+        }
+
+        100% {
+            opacity: 0%;
+            transform: translateY(-30px);
+        }
+
+    }
+
+
     body {
         overflow-y: hidden;
         background-color: bisque;
@@ -78,19 +119,31 @@
         border-radius: 24px;
     }
 
-    #img {
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
+
 
     .image-container>img {
         max-width: 100%;
         border-radius: 24px;
     }
 
+    .point {
+        font-size: 48pt;
+        position: absolute;
+        top: 50%;
+        right: 10%;
+        color: green;
+        animation-name: add-point;
+        animation-duration: 0.75s;
+    }
+
     .hidden {
         display: none;
+    }
+
+    #img {
+        position: absolute;
+        top: 0;
+        left: 0;
     }
 </style>
 
