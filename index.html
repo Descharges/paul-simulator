@@ -25,11 +25,11 @@
 
     function strum() {
         strumSound.cloneNode().play()
-        document.getElementById("2").classList.remove("hidden")
+        document.getElementById("img").classList.remove("hidden")
         document.getElementById("message").innerText = messages[Math.floor(Math.random() * messages.length)]
-        strumCount ++
+        strumCount++
         document.getElementById("strum-count").innerText = "Nombre de strum : " + strumCount
-        setTimeout(() => { document.getElementById("2").classList.add("hidden") }, 100)
+        setTimeout(() => { document.getElementById("img").classList.add("hidden") }, 100)
     }
 </script>
 
@@ -39,20 +39,22 @@
     <h3>(et monte le son)</h3>
 
     <div class="image-container" onclick="strum()">
-        <img id="1" src="./1.png" alt="Paul">
-        <img id="2" src="./2.png" alt="Paul" class="hidden">
+        <img src="./1.png" alt="Paul">
+        <img id="img" src="./2.png" alt="Paul">
     </div>
 
     <p id="message"></p>
     <p id="strum-count">Nombre de strum : 0</p>
-    <p>(Photo par le J)</p>
+    <p>(Photos par le J)</p>
 
 </body>
 
 <style>
     body {
+        overflow-y: hidden;
         background-color: bisque;
         height: 100vh;
+        max-height: 100vh;
         display: flex;
         gap: 10px;
         flex-direction: column;
@@ -72,16 +74,18 @@
         position: relative;
         width: 536px;
         max-width: 90%;
-        height: 690px;
         border-radius: 24px;
+    }
+
+    #img {
+        position: absolute;
+        top: 0;
+        left: 0;
     }
 
     .image-container>img {
         max-width: 100%;
         border-radius: 24px;
-        position: absolute;
-        top: 0;
-        left: 0;
     }
 
     .hidden {
