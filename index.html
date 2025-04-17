@@ -35,7 +35,8 @@
 
 <body>
     <h1>Paul Simulator</h1>
-    <h2>Clique pour jouer ! (et monte le son)</h2>
+    <h2>Clique pour jouer !</h2>
+    <h3>(et monte le son)</h3>
 
     <div class="image-container" onclick="strum()">
         <img id="1" src="./1.png" alt="Paul">
@@ -44,6 +45,7 @@
 
     <p id="message"></p>
     <p id="strum-count">Nombre de strum : 0</p>
+    <p>(Photo par le J)</p>
 
 </body>
 
@@ -61,6 +63,7 @@
 
     h1,
     h2,
+    h3,
     p {
         margin: 0;
     }
@@ -68,11 +71,13 @@
     .image-container {
         position: relative;
         width: 536px;
+        max-width: 90%;
         height: 690px;
         border-radius: 24px;
     }
 
     .image-container>img {
+        max-width: 100%;
         border-radius: 24px;
         position: absolute;
         top: 0;
