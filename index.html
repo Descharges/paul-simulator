@@ -4,147 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paul Simulator</title>
+    <title>Uke Simulator</title>
     <link rel="icon" href="./1.png">
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<script>
-    let strumSound = new Audio("./uke.mp3")
+<body>
+    <div class="content">
+        <h1>Uke Simulator</h1>
+        <h2>Clique pour jouer !</h2>
+        <h3>(et monte le son)</h3>
 
-    let messages = [
-        "Ouais !",
-        "Vas-y !",
-        "Ca ~groove~",
-        "Quel artiste !",
-        "Le Uke, c'est tellement mieux que la guitare",
-        ":D",
-        "*clap clap clap*"
-    ]
+        <div id="image-container" class="image-container">
+            <img id="img1" src="./1.png" alt="Paul">
+            <img id="img2" src="./2.png" alt="Paul" class="hidden">
+        </div>
 
-    let strumCount = localStorage.getItem("strumCount")
-    if (strumCount == null) {
-        strumCount = 0
-    }
-
-    function init() {
-        document.getElementById("strum-count").innerText = "Nombre de strum : " + strumCount
-    }
-
-    function animatePoint() {
-        let pointText = document.createElement("h1")
-        pointText.innerText = "+1"
-        pointText.classList.add("point")
-        document.getElementById("image-container").appendChild(pointText)
-        setTimeout(()=>{pointText.remove()}, 750)
-    }
-
-    function strum() {
-        // Play sound
-        strumSound.cloneNode().play()
-
-        // Play animation
-        animatePoint()
-
-        // Toggle picture
-        document.getElementById("img").classList.remove("hidden")
-        setTimeout(() => { document.getElementById("img").classList.add("hidden") }, 100)
-
-        // Set message
-        document.getElementById("message").innerText = messages[Math.floor(Math.random() * messages.length)]
-
-        // Update score
-        strumCount++
-        document.getElementById("strum-count").innerText = "Nombre de strum : " + strumCount
-        localStorage.setItem("strumCount", strumCount)
-    }
-
-
-</script>
-
-<body onload="init()">
-    <h1>Paul Simulator</h1>
-    <h2>Clique pour jouer !</h2>
-    <h3>(et monte le son)</h3>
-
-    <div id="image-container" class="image-container" onclick="strum()">
-        <img src="./1.png" alt="Paul">
-        <img id="img" src="./2.png" alt="Paul" class="hidden">
+        <i id="message"></i>
+        <p>Points de funk : <span id="funk-points">0</span></p>
     </div>
 
-    <p id="message"></p>
-    <p id="strum-count">Nombre de strum : 0</p>
-    <p>(Photos par le J)</p>
 
+    <div class="navbar">
+        <div class="navbar-button" id="info">
+            <img src="./icons/MaterialSymbolsInfoOutline.svg" alt="À propos">
+        </div>
+        <div class="navbar-button delete" id="reset">
+            <img src="./icons/MaterialSymbolsDeleteOutlineRounded.svg" alt="À propos">
+        </div>
+    </div>
 </body>
 
-<style>
-    @keyframes add-point {
-        0% {
-            opacity: 100%;
-        }
-
-        100% {
-            opacity: 0%;
-            transform: translateY(-30px);
-        }
-
-    }
-
-
-    body {
-        overflow-y: hidden;
-        background-color: bisque;
-        height: 100vh;
-        max-height: 100vh;
-        display: flex;
-        gap: 10px;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        font-family: 'Courier New', Courier, monospace;
-    }
-
-    h1,
-    h2,
-    h3,
-    p {
-        margin: 0;
-        text-align: center;
-    }
-
-    .image-container {
-        position: relative;
-        width: 536px;
-        max-width: 90%;
-        border-radius: 24px;
-    }
-
-
-
-    .image-container>img {
-        max-width: 100%;
-        border-radius: 24px;
-    }
-
-    .point {
-        font-size: 48pt;
-        position: absolute;
-        top: 50%;
-        right: 10%;
-        color: green;
-        animation-name: add-point;
-        animation-duration: 0.75s;
-    }
-
-    .hidden {
-        display: none;
-    }
-
-    #img {
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-</style>
+<script src="index.js" type="module"></script>
 
 </html>
