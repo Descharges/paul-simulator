@@ -39,6 +39,9 @@ export class UkePlayer {
         sturmEffectNode.innerText = text
         sturmEffectNode.classList.add("strum-effect")
         IMG_CONTAINER.append(sturmEffectNode)
+        sturmEffectNode.style.top = Math.floor(Math.random() * 100) + `%`
+        sturmEffectNode.style.left = Math.floor(Math.random() * 100) + `%`
+        sturmEffectNode.style.color = `#` + Math.floor(Math.random() * 16777215).toString(16)
         setTimeout(() => { sturmEffectNode.remove() }, 740)
     }
 
