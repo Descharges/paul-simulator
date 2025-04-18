@@ -13,7 +13,7 @@
 body {
     margin: 0;
     background-color: bisque;
-    height: 100vh;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
     font-family: 'Courier New', Courier, monospace;
