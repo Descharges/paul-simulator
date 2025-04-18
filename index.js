@@ -1,5 +1,9 @@
 import { UkePlayer } from "./base.js"
 
+function id(id){
+    return document.getElementById(id)
+}
+
 const IMG_CONTAINER = document.getElementById("image-container")
 const INFO_BUTTON = document.getElementById("info")
 const RESET_BUTTON = document.getElementById("reset")
@@ -8,6 +12,19 @@ let ukePlayer = new UkePlayer()
 IMG_CONTAINER.addEventListener("click", () => {
     ukePlayer.strum()
 })
+
+id("Am").addEventListener("click", () => {
+    ukePlayer.strum("Am")
+})
+
+id("G").addEventListener("click", () => {
+    ukePlayer.strum("G")
+})
+
+id("C").addEventListener("click", () => {
+    ukePlayer.strum("C")
+})
+
 
 INFO_BUTTON.addEventListener("click", () => {
     alert(`
