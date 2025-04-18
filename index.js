@@ -10,7 +10,7 @@ const RESET_BUTTON = document.getElementById("reset")
 
 let ukePlayer = new UkePlayer()
 IMG_CONTAINER.addEventListener("click", () => {
-    ukePlayer.strum()
+    ukePlayer.strum("Am7")
 })
 
 id("Am").addEventListener("click", () => {
