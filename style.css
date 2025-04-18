@@ -13,7 +13,7 @@
 body {
     margin: 0;
     background-color: bisque;
-    height: 100dvh;
+    height: 100svh;
     display: flex;
     flex-direction: column;
     font-family: 'Courier New', Courier, monospace;
@@ -78,6 +78,7 @@ p {
     position: relative;
     display: flex;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent
 }
 
 .image-container>img {
