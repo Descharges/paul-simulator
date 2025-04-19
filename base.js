@@ -1,6 +1,8 @@
 const POINTS_DISPLAY = document.getElementById("funk-points")
-const IMG_CONTAINER = document.getElementById("image-container")
 const IMG2 = document.getElementById("img2")
+
+import { EffectPlayer } from "./effects.js";
+
 
 export class UkePlayer {
 
@@ -8,6 +10,7 @@ export class UkePlayer {
         /** @type number */
         this.funkyPoints = 0;
         this.unlockedChords = ["Am", "G", "C"]
+        this.effectPlayer = new EffectPlayer()
         this.restoreSavedPlayer()
     }
 
@@ -30,23 +33,10 @@ export class UkePlayer {
         this.updateFunkyPointsView()
     }
 
-    /**
-     * 
-     * @param {string} text 
-     */
-    showStrumEffect(text) {
-        let sturmEffectNode = document.createElement("p")
-        sturmEffectNode.innerText = text
-        sturmEffectNode.classList.add("strum-effect")
-        IMG_CONTAINER.append(sturmEffectNode)
-        sturmEffectNode.style.top = Math.floor(Math.random() * 100) + `%`
-        sturmEffectNode.style.left = Math.floor(Math.random() * 100) + `%`
-        sturmEffectNode.style.color = `#` + Math.floor(Math.random() * 16777215).toString(16)
-        setTimeout(() => { sturmEffectNode.remove() }, 740)
-    }
 
     strum(chord = this.unlockedChords[Math.floor(Math.random() * this.unlockedChords.length)]) {
-        new Audio(`./${chord}.mp3`).play()
+        this.effectPlayer.playSound(chord)
+        this.effectPlayer.showStrumEffect(chord)
         this.addFunkyPoint(1)
         localStorage.setItem("funkyPoints", this.funkyPoints)
         IMG2.classList.remove("hidden")

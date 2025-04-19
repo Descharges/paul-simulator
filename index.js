@@ -29,10 +29,12 @@ id("C").addEventListener("click", () => {
 INFO_BUTTON.addEventListener("click", () => {
     alert(`
         Uke Simulator
-        --------------------------
         Par Paul Caillier
-        
-        Version 0.1.1
+        --------------------------
+        Version 0.1.3
+        * Réduction du délai entre l'appuie et le son sur mobile
+        * Ajout des notes multicolores
+        --------------------------
         Photos réalisées par le J
     `)
 })
