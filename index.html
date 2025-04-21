@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="content">
+    <div class="content" id="play">
         <h1>Uke Simulator</h1>
         <h2>Clique pour jouer !</h2>
         <h3>(et monte le son)</h3>
@@ -21,23 +21,37 @@
         </div>
 
         <div id="chords-container">
-            <p id="Am">Am</p>
-            <p id="G">G</p>
-            <p id="C">C</p>
         </div>
 
         <i id="message"></i>
-        <p>Points de funk : <span id="funk-points">0</span></p>
+    </div>
+
+    <div class="content hidden" id="shop">
+        <h1>Boutique d'accords</h1>
+        <div id="shop-chords-container">
+        </div>
+    </div>
+
+    <div class="status" id="status">
+        <p>Pts: <span id="funk-points">0</span></p>
+        <p id="log">Bienvenue sur Uke simulator !</p>
     </div>
 
 
     <div class="navbar">
-        <div class="navbar-button" id="info">
+        <div class="navbar-button" id="play-button">
+            <img src="./icons/MdiGuitarAcoustic.svg" alt="Jouer">
+        </div>
+        <div class="navbar-button" id="shop-button">
+            <img src="./icons/MaterialSymbolsShoppingBag.svg" alt="Boutique">
+        </div>
+        <div class="navbar-button" id="info-button">
             <img src="./icons/MaterialSymbolsInfoOutline.svg" alt="À propos">
         </div>
-        <div class="navbar-button delete" id="reset">
-            <img src="./icons/MaterialSymbolsDeleteOutlineRounded.svg" alt="À propos">
+        <div class="navbar-button delete" id="reset-button">
+            <img src="./icons/MaterialSymbolsDeleteOutlineRounded.svg" alt="Reset">
         </div>
+
     </div>
 </body>
 

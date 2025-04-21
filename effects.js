@@ -1,4 +1,6 @@
-const IMG_CONTAINER = document.getElementById("image-container")
+export function id(id) {
+    return document.getElementById(id)
+}
 
 export class EffectPlayer {
     constructor() {
@@ -40,14 +42,28 @@ export class EffectPlayer {
     * 
     * @param {string} text 
     */
-    showStrumEffect(text) {
-        let sturmEffectNode = document.createElement("p")
-        sturmEffectNode.innerText = text
-        sturmEffectNode.classList.add("strum-effect")
-        sturmEffectNode.style.top = 10 + Math.floor(Math.random() * 80) + `%`
-        sturmEffectNode.style.left = 10 + Math.floor(Math.random() * 80) + `%`
-        sturmEffectNode.style.color = `#` + Math.floor(Math.random() * 16777215).toString(16)
-        IMG_CONTAINER.append(sturmEffectNode)
-        setTimeout(() => { sturmEffectNode.remove() }, 740)
+    showFloatingText(text) {
+        let strumEffectNode = document.createElement("p")
+        strumEffectNode.innerText = text
+        strumEffectNode.classList.add("strum-effect")
+        strumEffectNode.style.top = 10 + Math.floor(Math.random() * 80) + `%`
+        strumEffectNode.style.left = 10 + Math.floor(Math.random() * 80) + `%`
+        strumEffectNode.style.color = `#` + Math.floor(Math.random() * 16777215).toString(16)
+        id("image-container").append(strumEffectNode)
+        setTimeout(() => { strumEffectNode.remove() }, 740)
+    }
+
+    showFloatingScoreUpdate(value) {
+        let pointEffectNode = document.createElement("p")
+        pointEffectNode.innerText = (value > 0 ? "+" : "-") + Math.abs(value)
+        pointEffectNode.className = "point-effect" + (value < 0 ? " text-fail" : " text-success")
+        console.log(pointEffectNode.className)
+        id("status").append(pointEffectNode)
+        setTimeout(() => { pointEffectNode.remove() }, 740)
+    }
+
+    showPlayerStrum() {
+        id("img2").classList.remove("hidden")
+        setTimeout(() => { id("img2").classList.add("hidden") }, 100)
     }
 }
