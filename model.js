@@ -16,6 +16,10 @@ class Player {
         return this._points
     }
 
+    get unlockedChords(){
+        return this._unlockedChords
+    }
+
     unlockChord(chord){
         this._unlockedChords.push(chord)
         view.updateAvilableChords(this._unlockedChords)

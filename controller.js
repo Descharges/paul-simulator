@@ -34,8 +34,12 @@ class Controller {
         `)
     }
 
-    unlockChord(chord){
-        if (CHORDS[chord].price <= player.points){
+    unlockChord(chord) {
+        if (player.unlockedChords.includes(chord)) {
+            view.logFailure("Déja débloqué...")
+            return
+        }
+        if (CHORDS[chord].price <= player.points) {
             view.logSuccess(`${chord} débloqué !`)
             player.addPoints(-CHORDS[chord].price)
             player.unlockChord(chord)
