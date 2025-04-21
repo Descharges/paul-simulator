@@ -26,9 +26,10 @@ class Controller {
             Uke Simulator
             Par Paul Caillier
             --------------------------
-            Version 0.1.3
-            * Réduction du délai entre l'appuie et le son sur mobile
-            * Ajout des notes multicolores
+            Version 0.1.4
+            * Ajout de la boutique d'accords
+            * Ajustements de l'interface
+            * Refactoring
             --------------------------
             Photos réalisées par le J
         `)

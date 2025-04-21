@@ -1,33 +1,33 @@
 import { view } from "./view.js";
 
 export const CHORDS = {
-    Am : {type: "minor", price: 50},
-    G : {type: "major", price: 100},
-    C : {type: "major", price: 50},
+    Am: { type: "minor", price: 50 },
+    G: { type: "major", price: 100 },
+    C: { type: "major", price: 50 },
 }
 
 class Player {
-    constructor(){
+    constructor() {
         this._points = 0
         this._unlockedChords = []
     }
 
-    get points(){
+    get points() {
         return this._points
     }
 
-    get unlockedChords(){
+    get unlockedChords() {
         return this._unlockedChords
     }
 
-    unlockChord(chord){
+    unlockChord(chord) {
         this._unlockedChords.push(chord)
         view.updateAvilableChords(this._unlockedChords)
         view.updateShop(this._unlockedChords)
         localStorage.setItem("unlockedChords", JSON.stringify(this._unlockedChords))
     }
 
-    setupPlayer(){
+    setupPlayer() {
         let savedValue = localStorage.getItem("funkyPoints");
         let initValue = savedValue == null ? 0 : parseInt(savedValue)
         this.addPoints(initValue)
@@ -38,7 +38,7 @@ class Player {
         view.updateShop(this._unlockedChords)
     }
 
-    addPoints(n){
+    addPoints(n) {
         this._points += n;
         localStorage.setItem("funkyPoints", this._points);
         view.updatePointCount(this._points)
@@ -47,3 +47,12 @@ class Player {
 }
 
 export let player = new Player()
+
+window.devenirTresRicheEn10Min = function () {
+    player.addPoints(-9999)
+    view.logFailure("Tu pensais VRAIMENT que ca marcherait ?")
+    setTimeout(() => {
+        player.addPoints(9999)
+        view.logSuccess("Bon aller, je suis sympa :)")
+    }, 5000)
+}

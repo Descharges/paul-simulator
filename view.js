@@ -8,7 +8,8 @@ function id(id) {
 
 export const NAVIGATION_TARGETS = {
     play: "play",
-    shop: "shop"
+    shop: "shop",
+    settings: "settings"
 }
 
 const RANDOM_MESSAGES = [
@@ -100,6 +101,10 @@ class View {
 
         id("reset-button").addEventListener("click", () => {
             controller.reset()
+        })
+
+        id("settings-button").addEventListener("click", () => {
+            this.navigateTo(NAVIGATION_TARGETS.settings)
         })
 
         id("play-button").addEventListener("click", () => {

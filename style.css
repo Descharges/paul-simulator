@@ -27,6 +27,29 @@ p {
     text-align: center;
 }
 
+button {
+    background-color: sienna;
+    color: white;
+    border: none;
+    font-size: 16pt;
+    padding: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(148, 68, 43);
+}
+
+.delete {
+    background-color: crimson;
+}
+
+.delete:hover {
+    background-color: rgb(187, 20, 42);
+}
+
+
 .content {
     flex-grow: 1;
     display: flex;
@@ -95,15 +118,6 @@ p {
 
 .navbar-button>img {
     height: 32px;
-}
-
-.delete {
-    align-self: flex-end;
-    background-color: crimson;
-}
-
-.delete:hover {
-    background-color: rgb(187, 20, 42);
 }
 
 .image-container {

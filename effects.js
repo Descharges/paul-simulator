@@ -57,7 +57,6 @@ export class EffectPlayer {
         let pointEffectNode = document.createElement("p")
         pointEffectNode.innerText = (value > 0 ? "+" : "-") + Math.abs(value)
         pointEffectNode.className = "point-effect" + (value < 0 ? " text-fail" : " text-success")
-        console.log(pointEffectNode.className)
         id("status").append(pointEffectNode)
         setTimeout(() => { pointEffectNode.remove() }, 740)
     }
